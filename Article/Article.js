@@ -85,6 +85,42 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Taran Neeld Writes an Awesome Article in 2019!',
+    date: 'Aug 7th, 2019',
+    firstParagraph: `Did you Lorem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam accusamus delectus
+          fugiat repellat laborum maxime pariatur eos ut neque nam quaerat deleniti enim, voluptatum optio dolore
+          minus repudiandae. Ut, rem.Did you Lorem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam accusamus delectus
+          fugiat repellat laborum maxime pariatur eos ut neque nam quaerat deleniti enim, voluptatum optio dolore
+          minus repudiandae. Ut, rem.`,
+
+    secondParagraph: `Did you Lorem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam accusamus delectus
+          fugiat repellat laborum maxime pariatur eos ut neque nam quaerat deleniti enim, voluptatum optio dolore
+          minus repudiandae. Ut, rem.`,
+
+    thirdParagraph: `Did you Lorem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam accusamus delectus
+          fugiat repellat laborum maxime pariatur eos ut neque nam quaerat deleniti enim, voluptatum optio dolore
+          minus repudiandae. Ut, rem.`
+  },
+  {
+    title: 'Mister Needle Throws Caution to the Wind!',
+    date: 'Aug 7th, 2019',
+    firstParagraph: `Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. 
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.
+          Mister Neeld Neldie Needed Needles.`,
+
+    secondParagraph: `Meister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. 
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.`,
+
+    thirdParagraph: `Miss Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. 
+          Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles. Mister Neeld Neldie Needed Needles.`
   }
 ];
 
@@ -112,3 +148,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+window.addEventListener('load', (event) => {
+
+  const articles = document.querySelector('.articles');
+
+  function createArticle(articleData) {
+    const article = document.createElement('div');
+    const title = document.createElement('h2');
+    const date = document.createElement('p');
+    const firstParagraph = document.createElement('p');
+    const secondParagraph = document.createElement('p');
+    const thirdParagraph = document.createElement('p');
+    const expandButton = document.createElement('span');
+  
+    article.classList.add('article');
+    date.classList.add('date');
+    expandButton.classList.add('expandButton');
+  
+    expandButton.addEventListener('click', (event) => {
+      expandButton.classList.toggle('article-open');
+    });
+  
+    title.textContent = articleData.title;
+    date.textContent = articleData.date;
+    firstParagraph.textContent = articleData.firstParagraph;
+    secondParagraph.textContent = articleData.secondParagraph;
+    thirdParagraph.textContent = articleData.thirdParagraph;
+  
+    article.appendChild(title);
+    article.appendChild(date);
+    article.appendChild(firstParagraph);
+    article.appendChild(secondParagraph);
+    article.appendChild(thirdParagraph);
+    article.appendChild(expandButton);
+  
+    return article;
+  }
+  
+  data.forEach(currentData => {
+    articles.appendChild(createArticle(currentData));
+  });
+
+});
