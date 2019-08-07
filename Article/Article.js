@@ -165,9 +165,9 @@ window.addEventListener('load', (event) => {
     article.classList.add('article');
     date.classList.add('date');
     expandButton.classList.add('expandButton');
-  
+
     expandButton.addEventListener('click', (event) => {
-      expandButton.classList.toggle('article-open');
+      article.classList.toggle('article-open');
     });
   
     title.textContent = articleData.title;
@@ -175,6 +175,7 @@ window.addEventListener('load', (event) => {
     firstParagraph.textContent = articleData.firstParagraph;
     secondParagraph.textContent = articleData.secondParagraph;
     thirdParagraph.textContent = articleData.thirdParagraph;
+    expandButton.textContent = 'Show More!';
   
     article.appendChild(title);
     article.appendChild(date);
